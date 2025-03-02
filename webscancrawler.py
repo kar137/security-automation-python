@@ -1,6 +1,7 @@
 import requests
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
+import sys
 
 class WebScanCrawler:
     def __init__(self, start_url, max_depth=3):
@@ -28,12 +29,17 @@ class WebScanCrawler:
             # Parse the page and extract links
             soup = BeautifulSoup(response.text, "html.parser")   # uses the BeautifulSoup library to parse the html content of a webpage
             for link in soup.find_all("a", href=True):   # finds all anchor tags in html with href attribute
-                full_url = urljoin(url, link["href"])   # link["href"] gives us the relative url or absolute url but urljoin combines the base url with the relative url to generate a full url
+                href = link["href"]
+                if not href or href.startswith(("javascript:", "mailto:", "#")):
+                    continue
+                full_url = urljoin(url, href)   # link["href"] gives us the relative url or absolute url but urljoin combines the base url with the relative url to generate a full url
                 if full_url.startswith(self.start_url):  # ensure we stay on the same domain
-                    self.crawl(full_url)     # recursively calls the crawl method
+                    self.crawl(full_url, depth+1)     # recursively calls the crawl method
 
         except requests.RequestException as e:
             print(f"Error fetching {url}: {e}")
+        except Exception as e:
+            print(f"Unexpected error fetching {url}: {e}")
 
     def check_security_headers(self, headers, url):
         """Check for missing security headers."""
@@ -68,13 +74,31 @@ class WebScanCrawler:
     def generate_report(self):
         """Generate a vulnerability report."""
         report = f"Green Tick Technical Assessment\nVULNERABILITY SCAN REPORT FOR {self.start_url}:\n"
-        for vulnerability in self.vulnerabilities:
-            report += f"- {vulnerability}\n"
+        if not self.vulnerabilities:
+            report += "No vulnerabilities found.\n"
+        else:
+            for vulnerability in self.vulnerabilities:
+                report += f"- {vulnerability}\n"
         return report
+    
+def validate_url(url):
+    """Validate the URL."""
+    parsed = urlparse(url)
+    if not parsed.scheme or not parsed.netloc:
+        raise ValueError(f"Invalid URL: {url}. Scheme (http/https) is missing.")
+    return url
 
 # Example usage
 if __name__ == "__main__":
-    start_url = input("https://www.sophiebritt.com/").strip()
-    crawler = WebScanCrawler(start_url)
-    crawler.crawl(start_url)
-    print(crawler.generate_report())
+    if len(sys.argv) > 1:
+        start_url = sys.argv[1].strip()
+    else:
+        start_url = input("Enter the URL to scan: ").strip()
+
+    try:
+        start_url = validate_url(start_url)
+        crawler = WebScanCrawler(start_url)
+        crawler.crawl(start_url)
+        print(crawler.generate_report())
+    except ValueError as e:
+        print(e)
