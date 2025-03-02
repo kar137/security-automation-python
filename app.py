@@ -3,11 +3,11 @@ import subprocess
 
 app = Flask(__name__)
 
-@app.route('/run-script', methods=['GET'])
+@app.route('/', methods=['GET'])
 def run_script():
     try:
-        result = subprocess.run(['python', 'webscancrawler.py'], capture_output=True, text=True)
-        return f"Script output:\n{result.stdout}"
+        result = subprocess.run(['python', 'webscancrawler.py', 'http://nabinkhadka1.com.np'], capture_output=True, text=True)
+        return f"<pre>Script output:\n{result.stdout}</pre>"
     except Exception as e:
         return f"Error: {str(e)}"
 
