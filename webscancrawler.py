@@ -91,7 +91,7 @@ def validate_url(url):
 # Example usage
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        start_url = sys.argv[1].strip()
+        start_url = sys.argv[1].strip()   #passing url as argument through debugger
     else:
         start_url = input("Enter the URL to scan: ").strip()
 
