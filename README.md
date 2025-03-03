@@ -83,6 +83,7 @@ python webscancrawler.py http://nabinkhadka1.com.np
 
 ## Hosting
 The live solution can be found at: [https://securitysystemcheck.onrender.com]
+- Note: Wait for some minutes it might be in sleep mode.
 
 ## License
 This project is for assessment purposes only and does not come with any license.
