@@ -6,8 +6,8 @@ import sys
 class WebScanCrawler:
     def __init__(self, start_url, max_depth=3):
         self.start_url = start_url
-        self.visited_urls = set()  # array of visited_urls
-        self.vulnerabilities = []
+        self.visited_urls = set()  # set of visited urls that allows for fast lookups
+        self.vulnerabilities = []  # empty list of vulnerabilities
         self.max_depth = max_depth
 
     def crawl(self, url, depth=0):   # this method visits all pages starting from given url
@@ -54,7 +54,6 @@ class WebScanCrawler:
                 self.vulnerabilities.append(f"MISSING HTTP SECURITY HEADER: {header} on {url}")
 
     def check_outdated_software(self, html, url):
-        """Check for outdated software versions."""
         # example Check for outdated Apache version
         if "Apache/2.4.6" in html:
             self.vulnerabilities.append(f"OUTDATED SOFTWARE VERSION DETECTED: Apache 2.4.6 on {url}")
