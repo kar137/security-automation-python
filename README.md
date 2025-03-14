@@ -1,13 +1,12 @@
 # securitysystem-scripts-python
 
 ## Overview
-This repository contains solutions for the Green Tick Technical Assessment. The assessment includes two tasks:
+This repository contains solutions for the following systems:
 1. **SystemMonitor**: A log parsing and alerting system.
 2. **WebScanCrawler**: A simple web crawler for vulnerability scanning.
 
 ## 1. SystemMonitor
-### Problem Statement
-Develop a function that reads a log file and identifies error messages or suspicious patterns such as:
+Developed a function that reads a log file and identifies error messages or suspicious patterns such as:
 - "failed login"
 - "unauthorized access"
 - "malicious activity detected"
@@ -35,8 +34,7 @@ python alert_system.py
 ---
 
 ## 2. WebScanCrawler
-### Problem Statement
-Develop a web crawler that scans a website for basic security vulnerabilities, including:
+Developed a web crawler that scans a website for basic security vulnerabilities, including:
 - Missing HTTP security headers.
 - Outdated software versions (if visible in headers or HTML).
 - Forms lacking proper security attributes.
@@ -86,9 +84,4 @@ The live solution can be found at: [https://securitysystemcheck.onrender.com]
 - Note: Wait for some minutes it might be in sleep mode.
 
 ## License
-This project is for assessment purposes only and does not come with any license.
-
----
-
-### Author
-Karan Bista
+MIT License
