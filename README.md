@@ -1,4 +1,4 @@
-# securitysystem-scripts-python
+# security-automation-python
 
 ## Overview
 This repository contains solutions for the following systems:
