@@ -72,7 +72,7 @@ class WebScanCrawler:
 
     def generate_report(self):
         """Generate a vulnerability report."""
-        report = f"Green Tick Technical Assessment\nVULNERABILITY SCAN REPORT FOR {self.start_url}:\n"
+        report = f"VULNERABILITY SCAN REPORT FOR {self.start_url}:\n"
         if not self.vulnerabilities:
             report += "No vulnerabilities found.\n"
         else:
