@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scan Crawler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #00BFFF, #8A2BE2);
+            background-color: #f4f4f4;
+            overflow:hidden;
+        }
+        .container {
+            position:absolute;
+            top: 13%;
+            left: 50%
+            transform: translate(-50%, -70%);
+            text-align: center;
+            max-width: 90%;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            justify-align:center;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 1.5s ease-in-out;
+        }
+        input {
+            padding: 12px;
+            margin: 10px 0;
+            width: 300px;
+            border: 2px solid transparent;
+            border-color: #6a11cb;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            font-size: 1em;
+            transition: background 0.3s ease, transform 0.3s ease;
+            outline:none;
+        }
+        input:focus {
+            background: rgba(255, 255, 255, 1);
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+            transform: scale(1.05);
+            outline: none;
+        }
+        button {
+            padding: 12px 25px;
+            border: none;
+            background:rgb(140, 0, 255);
+            color: white;
+            cursor: pointer;
+            border-radius: 25px;
+            background: #ff6f61;
+            font-size: 1em;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top:7px;
+        }
+        button:hover {
+            background: #ff3b2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        body::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        body::after {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Scan Crawler</h1>
+        <form action="/scan" method="POST">
+            <label for="url">Enter URL to scan:</label><br>
+            <input type="text" id="url" name="url" required><br>
+            <button type="submit">Scan</button>
+        </form>
+    <div>
+</body>
+</html>
