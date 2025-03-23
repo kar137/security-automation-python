@@ -12,7 +12,7 @@ def run_script():
     url = request.form.get('url')
     try:
         result = subprocess.run(['python', 'webscancrawler.py', url], capture_output=True, text=True)   # http://nabinkhadka1.com.np  i was looking at this guy portfolio let's see how many security vulnerabilities he have
-        return f"<pre>Script output:\n{result.stdout}</pre>"
+        return render_template('result.html', output=result.stdout, url=url)
     except Exception as e:
         return f"Error: {str(e)}"
 
