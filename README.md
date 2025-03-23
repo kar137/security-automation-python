@@ -13,23 +13,10 @@ Developed a function that reads a log file and identifies error messages or susp
 
 If such patterns are detected, the system generates an alert.
 
-### Input
-A text log file containing system logs.
-
-### Expected Output Example
-```
-ALERT: UNAUTHORIZED ACCESS ATTEMPT DETECTED AT 2024-12-22 10:45:00
-```
-
 ### How to Run
 ```bash
 python alert_system.py
 ```
-
-### Assumptions & Limitations
-- The script scans logs line by line for predefined suspicious patterns.
-- It assumes logs are in plaintext format.
-- No machine learning techniques are used; it's purely rule-based.
 
 ---
 
@@ -39,33 +26,10 @@ Developed a web crawler that scans a website for basic security vulnerabilities,
 - Outdated software versions (if visible in headers or HTML).
 - Forms lacking proper security attributes.
 
-The crawler should:
-1. Accept a URL to start scanning.
-2. Crawl linked pages recursively.
-3. Check for vulnerabilities and generate a report.
-
-### Input
-A URL to scan (e.g., `http://nabinkhadka1.com.np`).
-
-### Expected Output Example
-```
-VULNERABILITY SCAN REPORT FOR http://nabinkhadka1.com.np:
-- MISSING HTTP SECURITY HEADERS: STRICT-TRANSPORT-SECURITY
-- OUTDATED SOFTWARE VERSION DETECTED: APACHE 2.4.6
-- FORM WITHOUT PROPER METHOD ATTRIBUTE: /CONTACT-FORM
-```
-
 ### How to Run
 ```bash
-python webscancrawler.py http://nabinkhadka1.com.np
+python app.py
 ```
-
-### Assumptions & Limitations
-- The crawler follows links within the same domain.
-- It does not attempt deep security testing (e.g., SQL injection, XSS detection).
-- Headers and form attributes are checked based on basic heuristics.
-
----
 
 ## Setup & Installation
 1. Clone this repository:
@@ -81,7 +45,4 @@ python webscancrawler.py http://nabinkhadka1.com.np
 
 ## Hosting
 The live solution can be found at: [https://securitysystemcheck.onrender.com]
-- Note: Wait for some minutes it might be in sleep mode.
-
-## License
-MIT License
+- Note: Wait for some minutes as it might be in sleep mode.
