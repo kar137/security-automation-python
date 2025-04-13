@@ -50,6 +50,23 @@
         a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+            body, html {
+                width: 100%;
+                overflow-x: hidden;
+            }
+        
+            .container {
+                width: 90%; /* Full width */
+                top: 3%;
+                max-width: 100%; /* Allow container to take full width */
+                margin: 0 auto; /* Center the container */
+                padding: 0px 15px; /* Add padding for smaller screens */
+                padding-left: 0px;
+            }
+            h1{
+                font-size: 18px;
+            }
     </style>
 </head>
 <body>
